@@ -1,0 +1,43 @@
+# Explore Stuff
+
+## Installation
+
+Generate requirement file
+
+```zsh
+pipreqs src
+```
+
+Mac
+
+```zsh
+pyinstaller --noconfirm --onedir --windowed --add-data "/Users/kittipos/opt/miniconda3/lib/python3.9/site-packages/customtkinter:customtkinter/" app.py
+
+
+```
+
+## Calculate APW
+```{python}
+def calc_APW(nc: float, enh: float, delayed: float) -> float:
+    """
+    Calculate APW (Absolute Percentage Washout)
+
+    Parameters:
+        nc (float): Non-contrast HU
+        enh (float): Enhanced HU
+        delayed (float): Delayed HU
+
+    Returns: APW (float)
+    """
+    APW = (enh - delayed) / (enh - nc)
+    return APW
+
+calc_APW(2, 4, 5)
+# calc_APW(2, 4, "A")
+# calc_APW(2, 4, True)
+```
+
+```{python}
+calc_APW.__doc__
+calc_APW.__annotations__
+```
