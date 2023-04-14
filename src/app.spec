@@ -1,5 +1,6 @@
 # -*- mode: python ; coding: utf-8 -*-
-
+import customtkinter
+customtkinter_root = os.path.dirname(customtkinter.__file__)
 
 block_cipher = None
 
@@ -8,7 +9,7 @@ a = Analysis(
     ['app.py'],
     pathex=[],
     binaries=[],
-    datas=[('/Users/kittipos/opt/miniconda3/lib/python3.9/site-packages/customtkinter', 'customtkinter/')],
+    datas=[(customtkinter_root, 'customtkinter/')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
