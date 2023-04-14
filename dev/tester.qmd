@@ -8,12 +8,15 @@ Generate requirement file
 pipreqs src
 ```
 
-Mac
+To Install in My Mac
 
 ```zsh
+cd src
+
 pyinstaller --noconfirm --onedir --windowed --add-data "/Users/kittipos/opt/miniconda3/lib/python3.9/site-packages/customtkinter:customtkinter/" app.py
 
-
+# Copy To Distribute
+cp -r dist/app.app ../product/ ; mv ../product/app.app ../product/AdrenalWashout_App.app
 ```
 
 ## Calculate APW
