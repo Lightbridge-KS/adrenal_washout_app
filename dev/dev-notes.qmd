@@ -16,7 +16,7 @@ cd src
 pyinstaller --noconfirm --onedir -n "AdrenalWashout_macos" --windowed --add-data "/Users/kittipos/opt/miniconda3/lib/python3.9/site-packages/customtkinter:customtkinter/" app.py
 
 # Compress
-tar -czf dist/app.tar.gz dist/app.app
+tar -czf dist/AdrenalWashout_macos.tar.gz dist/AdrenalWashout_macos.app
 
 # Copy To Distribute
 # cp -r dist/app.app ../product/ ; mv ../product/app.app ../product/AdrenalWashout_macos.app
