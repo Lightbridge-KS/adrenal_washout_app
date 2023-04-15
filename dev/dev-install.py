@@ -30,7 +30,7 @@ else:
     print("On Windows")
     # Run on Win
     cmd_win_str = fr"""
-pyinstaller --noconfirm --onefile -n {app_name} --windowed --add-data "{home_dir}\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" app.py
+pyinstaller --noconfirm --onefile -n {app_name} --windowed --add-data "{home_dir}\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" --icon="assets\\app.ico" app.py
 """ 
     os.system(cmd_win_str)
     #print(cmd_win_str)
