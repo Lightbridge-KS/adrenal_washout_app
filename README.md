@@ -2,7 +2,7 @@
 
 > A desktop application for calculate adrenal washout in multiphase CT.
 
-<img src="./doc/app-example-macos.png" align="center" width="200">
+<img src="./doc/app-example-macos.png" align="center" width="400">
 
 | MacOS
 
