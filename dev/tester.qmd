@@ -47,3 +47,12 @@ calc_APW(2, 4, 5)
 calc_APW.__doc__
 calc_APW.__annotations__
 ```
+
+```{python}
+float("") # Error
+float("3")
+
+None == None
+
+round(None)
+```
