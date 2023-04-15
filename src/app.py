@@ -1,7 +1,8 @@
-import customtkinter
+import tkinter as tk
+import customtkinter as ctk
 
-customtkinter.set_appearance_mode("System")  # Modes: system (default), light, dark
-customtkinter.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
+ctk.set_appearance_mode("System")  # Modes: system (default), light, dark
+ctk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
 
 # Functions
@@ -20,27 +21,42 @@ def calc_APW(nc: float, enh: float, delayed: float) -> float:
     return APW
 
 # Input Frame
-class InputFrame(customtkinter.CTkFrame):
+class InputFrame(ctk.CTkFrame):
     """Input Frame for NC, Enhanced, Delayed in HU"""
 
     def __init__(self, *args, header_name="InputFrame", **kwargs):
         super().__init__(*args, **kwargs)
         
         ## Header
-        self.header = customtkinter.CTkLabel(self, text=header_name, font=customtkinter.CTkFont(weight="bold"))
-        self.header.pack()
+        self.header = ctk.CTkLabel(self, text=header_name, font=ctk.CTkFont(weight="bold"))
+        self.header.grid(row=0, columnspan = 2)
 
+        # NC
+        ## NC Label
+        self.label_nc = ctk.CTkLabel(self, text="Non Contrast (HU):", font=ctk.CTkFont(weight="bold"))
+        self.label_nc.grid(row=1, column=0, pady=10, padx=(10, 5), sticky=tk.E)
         ## NC Entry
-        self.entry_nc = customtkinter.CTkEntry(master=self, placeholder_text="Non Contrast (HU)")
-        self.entry_nc.pack(padx=20, pady=10)
+        self.entry_nc = ctk.CTkEntry(master=self, placeholder_text="(HU)", width=100)
+        #self.entry_nc.pack(padx=20, pady=10)
+        self.entry_nc.grid(row=1, column=1, pady=10, padx=(0, 10) )
 
-        ## Enhanced
-        self.entry_enh = customtkinter.CTkEntry(master=self, placeholder_text="Enhanced (HU)")
-        self.entry_enh.pack(padx=20, pady=10)
+        # Enhanced
+        ## Enhanced Label
+        self.label_enh = ctk.CTkLabel(self, text="Enhanced (HU):", font=ctk.CTkFont(weight="bold"))
+        self.label_enh.grid(row=2, column=0, pady=(0, 10), padx=(10, 5), sticky=tk.E)
+        ## Enhanced Entry
+        self.entry_enh = ctk.CTkEntry(master=self, placeholder_text="(HU)", width=100)
+        #self.entry_enh.pack(padx=20, pady=10)
+        self.entry_enh.grid(row=2, column=1, pady=(0, 10), padx=(0, 10) )
 
-        ## Delayed
-        self.entry_delayed = customtkinter.CTkEntry(master=self, placeholder_text="Delayed (HU)")
-        self.entry_delayed.pack(padx=20, pady=10)
+        # Delayed
+        ## Delayed Label
+        self.label_delayed = ctk.CTkLabel(self, text="Delayed (HU):", font=ctk.CTkFont(weight="bold"))
+        self.label_delayed.grid(row=3, column=0, pady=(0, 10), padx=(10, 5), sticky=tk.E)
+        ## Delayed Entry
+        self.entry_delayed = ctk.CTkEntry(master=self, placeholder_text="(HU)", width=100)
+        #self.entry_delayed.pack(padx=20, pady=10)
+        self.entry_delayed.grid(row=3, column=1, pady=(0, 10), padx=(0, 10) )
 
     # Get Input Parameter
     def get_input(self):
@@ -69,7 +85,7 @@ class InputFrame(customtkinter.CTkFrame):
 #         self.show_text.pack()
 
 # Main App
-class App(customtkinter.CTk):
+class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
@@ -78,7 +94,7 @@ class App(customtkinter.CTk):
         self.title("Adrenal CT Washout Calculator App")
 
         # App Title (Inside)
-        self.logo_label = customtkinter.CTkLabel(self, text="Adrenal CT Washout Calculator", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.logo_label = ctk.CTkLabel(self, text="Adrenal CT Washout Calculator", font=ctk.CTkFont(size=20, weight="bold"))
         self.logo_label.pack(pady = 10)
 
         # Input Frame for HU
@@ -90,12 +106,12 @@ class App(customtkinter.CTk):
         # self.outputframe.pack()
 
         # Output TextBox
-        self.output_textbox = customtkinter.CTkTextbox(self, height = 150, width = 300) 
+        self.output_textbox = ctk.CTkTextbox(self, height = 150, width = 300) 
         self.output_textbox.pack(padx=20, pady=20)
         
 
         # Button: Calculate
-        self.button_calc = customtkinter.CTkButton(self, text="Calculate", command=self.calc_APW_app)
+        self.button_calc = ctk.CTkButton(self, text="Calculate", command=self.calc_APW_app)
         self.button_calc.pack(padx=20, pady=20)
 
     # Calculate
