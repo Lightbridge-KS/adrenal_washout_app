@@ -22,7 +22,8 @@ if platform == "darwin":
     # Run on Mac
     cmd_mac_str = f"""
 pyinstaller --noconfirm --onedir -n '{app_name}' --windowed --add-data "{home_dir}/opt/miniconda3/lib/python3.9/site-packages/customtkinter:customtkinter/" --icon="assets/app.ico" app.py
-tar -czf dist/{app_name}.tar.gz dist/{app_name}.app
+cd dist
+tar -czf {app_name}-macos.tar.gz {app_name}.app
 """
     subprocess.run(cmd_mac_str, shell=True)
     # print(cmd_mac_str)
