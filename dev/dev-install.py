@@ -33,4 +33,5 @@ else:
 pyinstaller --noconfirm --onefile -n {app_name} --windowed --add-data "{home_dir}\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" app.py
 """ 
     os.system(cmd_win_str)
+    #print(cmd_win_str)
     #subprocess.run(cmd_win_str, shell=True) # Not work
