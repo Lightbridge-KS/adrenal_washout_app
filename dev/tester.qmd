@@ -8,7 +8,7 @@ Generate requirement file
 pipreqs src
 ```
 
-To Install in My Mac
+### To Install in My Mac
 
 ```zsh
 cd src
@@ -20,6 +20,14 @@ tar -czf dist/app.tar.gz dist/app.app
 
 # Copy To Distribute
 # cp -r dist/app.app ../product/ ; mv ../product/app.app ../product/AdrenalWashout_macos.app
+```
+
+### To Install in My Win
+
+```zsh
+cd src
+
+pyinstaller --noconfirm --onefile -n "AdrenalWashout_win" --windowed --add-data "C:\Users\prach\AppData\Local\Programs\Python\Python311\Lib\site-packages\customtkinter;customtkinter/" .\app.py
 ```
 
 ## Calculate APW
