@@ -1,24 +1,10 @@
 import tkinter as tk
 import customtkinter as ctk
+import adrenalwash as adr
 
 ctk.set_appearance_mode("System")  # Modes: system (default), light, dark
 ctk.set_default_color_theme("blue")  # Themes: blue (default), dark-blue, green
 
-
-# Functions
-def calc_APW(nc: float, enh: float, delayed: float) -> float:
-    """
-    Calculate APW (Absolute Percentage Washout)
-
-    Parameters:
-        nc (float): Non-contrast HU
-        enh (float): Enhanced HU
-        delayed (float): Delayed HU
-
-    Returns: APW (float)
-    """
-    APW = (enh - delayed) / (enh - nc)
-    return APW
 
 # Input Frame
 class InputFrame(ctk.CTkFrame):
@@ -60,7 +46,8 @@ class InputFrame(ctk.CTkFrame):
 
     # Get Input Parameter
     def get_input(self):
-        input = {"nc": float(self.entry_nc.get()),
+        nc_raw = self.entry_nc.get()
+        input = {"nc": float(nc_raw) if nc_raw != "" else None,
                  "enh": float(self.entry_enh.get()),
                  "delayed": float(self.entry_delayed.get())}
         return input
@@ -70,26 +57,21 @@ class InputFrame(ctk.CTkFrame):
         nc = float(self.entry_nc.get())
         enh = float(self.entry_enh.get())
         delayed = float(self.entry_delayed.get())
-        APW = calc_APW(nc, enh, delayed)
+        APW = adr.calc_APW(nc, enh, delayed)
         return(APW)
-
-# Output Frame
-# class OutputFrame(customtkinter.CTkFrame):
-#     """Output Frame"""
-#     def __init__(self, *args, **kwargs):
-#         super().__init__(*args, **kwargs)
-
-#     def show(self, APW=""):
-#         text = f"""APW: {APW}"""
-#         self.show_text = customtkinter.CTkLabel(self, text="Haha")
-#         self.show_text.pack()
+    # Get RPW
+    def get_rpw(self):
+        enh = float(self.entry_enh.get())
+        delayed = float(self.entry_delayed.get())
+        RPW = adr.calc_RPW(enh, delayed)
+        return(RPW)
 
 # Main App
 class App(ctk.CTk):
     def __init__(self):
         super().__init__()
 
-        self.minsize(500, 300)
+        self.minsize(350, 450)
         # App Title (Outside)
         self.title("Adrenal CT Washout Calculator App")
 
@@ -101,32 +83,39 @@ class App(ctk.CTk):
         self.inputframe = InputFrame(self, header_name="Input HU")
         self.inputframe.pack()
 
-        # Output Frame
-        # self.outputframe = OutputFrame(self)
-        # self.outputframe.pack()
-
         # Output TextBox
-        self.output_textbox = ctk.CTkTextbox(self, height = 150, width = 300) 
+        self.output_textbox = ctk.CTkTextbox(self, height = 150, width = 250) 
         self.output_textbox.pack(padx=20, pady=20)
         
 
         # Button: Calculate
         self.button_calc = ctk.CTkButton(self, text="Calculate", command=self.calc_APW_app)
-        self.button_calc.pack(padx=20, pady=20)
+        self.button_calc.pack(padx=20, pady=5)
 
     # Calculate
     def calc_APW_app(self):
-        APW = self.inputframe.get_apw()
         input = self.inputframe.get_input()
-        print(f"Absolute Washout: {APW}") # To console
-        # self.output = customtkinter.CTkLabel(self, text = f"APW: {APW}")
-        # self.output.pack()
-        APW_pretty = round(APW*100, 2)
-        self.output_textbox.delete("0.0", "end")  # delete all text
-        self.output_textbox.insert("0.0", 
-                                   "Result\n\n" +
+        # APW
+        if input["nc"] != None:
+            APW = self.inputframe.get_apw()
+            APW_pretty = f"{round(APW*100, 2)}%"
+        else:
+            APW = "Not calculable"
+            APW_pretty = "Not calculable"
 
-                                   f"APW = {APW_pretty}%\n\n" +
+        # RPW
+        RPW = self.inputframe.get_rpw()
+        RPW_pretty = f"{round(RPW*100, 2)}%"
+
+        print(f"APW: {APW}, RPW: {RPW}") # To console
+
+        self.output_textbox.delete("0.0", "end")  # delete all text
+        # OutPut
+        self.output_textbox.insert("0.0", 
+                                   "Adrenal CT Washout:\n\n" +
+
+                                   f"APW = {APW_pretty}\n" +
+                                   f"RPW = {RPW_pretty}\n\n"
 
                                    f"- NC: {input['nc']} HU\n" +
                                    f"- Enhanced: {input['enh']} HU\n" +
