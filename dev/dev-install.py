@@ -3,7 +3,6 @@ import os
 from sys import platform
 import subprocess
 
-from pathlib import Path
 
 
 print(os.getcwd()) # Project root
@@ -26,8 +25,8 @@ tar -czf dist/{app_name}_macos.tar.gz dist/{app_name}_macos.app
 else:
     print("On Windows")
     # Run on Win
-    cmd_win_str = f"""
-pyinstaller --noconfirm --onefile -n '{app_name}_win' --windowed --add-data "C:\\Users\\prach\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" app.py
-"""
-    subprocess.run(cmd_win_str, shell=True)
-
+    cmd_win_str = fr"""
+pyinstaller --noconfirm --onefile -n {app_name}_win --windowed --add-data "C:\\Users\\prach\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" app.py
+""" 
+    os.system(cmd_win_str)
+    #subprocess.run(cmd_win_str, shell=True) # Not work
