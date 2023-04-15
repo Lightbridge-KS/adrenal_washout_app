@@ -34,5 +34,8 @@ else:
 pyinstaller --noconfirm --onefile -n {app_name} --windowed --add-data "{home_dir}\\AppData\\Local\\Programs\\Python\\Python311\\Lib\\site-packages\\customtkinter;customtkinter/" --icon="assets\\app.ico" app.py
 """ 
     os.system(cmd_win_str)
+    # Zip File
+    os.chdir("dist") 
+    os.system(f"powershell -Command Compress-Archive -Path {app_name}.exe -DestinationPath {app_name}-win.zip")
     #print(cmd_win_str)
     #subprocess.run(cmd_win_str, shell=True) # Not work
