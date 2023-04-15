@@ -1,4 +1,4 @@
-# Adrenal Washout CT Calculator App
+# Adrenal CT Washout Calculator <a href="https://lightbridge-ks.github.io/https://github.com/Lightbridge-KS/adrenal_washout_app"><img src="doc/app-logo.png" align="right" height="138" /></a>
 
 > A desktop application for calculate adrenal washout in multiphase CT.
 
