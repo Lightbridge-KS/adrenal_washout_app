@@ -9,7 +9,7 @@
 
 Light            |  Dark
 :-------------------------:|:-------------------------:
-![](./doc/app-macos-light.png)  |  ![](./doc/app-macos-dark.png)
+![](./doc/app-macos-light-theme.png)  |  ![](./doc/app-macos-dark-theme.png)
 
 
 ### Reference
