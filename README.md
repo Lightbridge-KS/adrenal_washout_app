@@ -7,7 +7,7 @@
 -   Download executable app: [here](https://github.com/Lightbridge-KS/adrenal_washout_app/releases) (available in Windows and MacOS)
 
 
-Light             |  Dark
+Light            |  Dark
 :-------------------------:|:-------------------------:
 ![](./doc/app-macos-light.png)  |  ![](./doc/app-macos-dark.png)
 
