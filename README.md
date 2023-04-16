@@ -2,6 +2,12 @@
 
 > A desktop application for calculate adrenal washout in multiphase CT.
 
+
+Light             |  Dark
+:-------------------------:|:-------------------------:
+![](./doc/app-macos-light.png)  |  ![](./doc/app-macos-dark.png)
+
+
 <img src="./doc/app-example-macos.png" align="center" width="400">
 
 | MacOS
