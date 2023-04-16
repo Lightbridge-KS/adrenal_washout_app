@@ -1,10 +1,10 @@
 # Adrenal CT Washout Calculator <a href="https://github.com/Lightbridge-KS/adrenal_washout_app"><img src="doc/app-logo.png" align="right" height="138" /></a>
 
-> A desktop application for calculate adrenal washout in multiphase CT.
+> **A desktop application for calculate adrenal percentage washout in multiphase CT.**
 
 -   Implemented using [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) Python package.
 
--   Build for Windows and MacOS.
+-   Download executable app: [here](https://github.com/Lightbridge-KS/adrenal_washout_app/releases) (available in Windows and MacOS)
 
 
 Light             |  Dark
@@ -12,13 +12,7 @@ Light             |  Dark
 ![](./doc/app-macos-light.png)  |  ![](./doc/app-macos-dark.png)
 
 
-<img src="./doc/app-example-macos.png" align="center" width="400">
+### Reference
 
-| MacOS
-
-
-<img src="./doc/app-example-win.png" align="center" width="400">
-
-| Windows
-
-
+- Boland, G. W. L. (2011). Adrenal imaging: Why, when, what, and how? Part 2. What technique? American Journal of Roentgenology, 196(1), W1–W5. https://doi.org/10.2214/AJR.10.4205
+- [CustomTkinter](https://github.com/TomSchimansky/CustomTkinter) package
